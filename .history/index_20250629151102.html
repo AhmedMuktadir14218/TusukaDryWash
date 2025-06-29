@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tusuka Wash Dry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-gray-900">
+    <!-- Corporate Header -->
+    <div class="bg-white shadow-md py-6 mb-8">
+        <h1 class="text-4xl font-bold text-center text-slate-800">
+            <span class="text-blue-600">Tusuka</span> Wash Dry
+        </h1>
+        <p class="text-center text-gray-500 mt-2">Production Monitoring System</p>
+    </div>
+
+    <div class="container mx-auto px-4 mb-8">
+        <!-- Table Container -->
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+            <!-- Table Header -->
+            <div class="p-4 border-b border-gray-200 bg-white">
+                <h2 class="text-xl font-semibold text-gray-700">Production Overview</h2>
+                <p class="text-sm text-gray-500">Active wash and dry orders</p>
+            </div>
+
+            <!-- Table Wrapper -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto text-sm">
+                    <thead>
+                        <tr class="bg-gradient-to-r from-blue-50 to-blue-100 text-gray-700">
+                            <th class="px-4 py-3 border-b font-semibold text-left">S/N</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Fac</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Unit</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Buyer</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Style</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">PO/Color</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Work Order</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">T. Date</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Ord. Qty</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Wash Recv Qty</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Bal. Qty</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Marks</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">1st Dry Input Qty</th>
+                            <th class="px-4 py-3 border-b font-semibold text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-slate-50 transition duration-150">
+                            <td class="px-4 py-3">1</td>
+                            <td class="px-4 py-3">TFL</td>
+                            <td class="px-4 py-3">Unit 1</td>
+                            <td class="px-4 py-3 font-medium">GD</td>
+                            <td class="px-4 py-3">100094402</td>
+                            <td class="px-4 py-3 text-sm">542117::ARIANA BLUE::300625</td>
+                            <td class="px-4 py-3">00059371</td>
+                            <td class="px-4 py-3">7/1/2025</td>
+                            <td class="px-4 py-3">2001</td>
+                            <td class="px-4 py-3">2169</td>
+                            <td class="px-4 py-3">1993</td>
+                            <td class="px-4 py-3">লুপে লাল + সবুজ রশি PS-24</td>
+                            <td class="px-4 py-3">1000</td>
+                            <td class="px-4 py-3">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-150 shadow-sm">
+                                    1st Dry
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Repeat the same structure for other rows -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

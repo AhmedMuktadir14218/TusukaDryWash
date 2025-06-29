@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tusuka Wash Dry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="bg-gray-800 shadow-lg py-8 mb-8">
+        <h1 class="text-5xl font-bold text-center text-white font-montserrat tracking-tight">
+            <span class="text-[#5E68EA]">Tusuka</span> 1st Dry Process
+        </h1>
+        <p class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide">Production Monitoring System</p>
+    </div>
+
+    <div class="container mx-auto px-4 mb-8">
+        <div class="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100">
+            <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100">
+                <h2 class="text-2xl font-semibold text-gray-800 font-montserrat">Production Overview</h2>
+                <p class="text-sm text-gray-600 font-poppins mt-1">Active wash and dry orders</p>
+            </div>
+
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="min-w-full table-auto text-sm">
+                    <thead>
+                        <tr class="bg-gray-700 text-white font-poppins">
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">S/N</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Fac</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Unit</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Buyer</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Style</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">PO/Color</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Work Order</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">T. Date</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Ord. Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Wash Recv Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Bal. Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Marks</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">1st Dry Input Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-inter" id="productionTableBody">
+                        <tr class="hover:bg-gray-50 transition-all duration-200" >
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">1</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">GD</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">100094402</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">542117::ARIANA gray::300625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059371</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/1/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">2001</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">2169</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1993</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল + সবুজ রশি PS-24</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Dry Input Qty">1000</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Dry
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-qty="0" data-processes='[]'>
+    <td class="px-4 py-3.5 text-gray-600" data-label="S/N">2</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+    <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BAGGY JORTS DAMAGES (5252/204/406)</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">93284-D::gray-400::300625</td>
+    <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059372</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/3/2025</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">6000</td>
+    <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">6491</td>
+    <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">6491</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে হলুদ রশি</td>
+    <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Dry Input Qty">0</td>
+    <td class="px-4 py-3.5">
+        <button class="open-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            1st Dry
+        </button>
+    </td>
+</tr>
+<tr class="hover:bg-gray-50 transition-all duration-200" data-qty="0" data-processes='[]'>
+    <td class="px-4 py-3.5 text-gray-600" data-label="S/N">3</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+    <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BERMUDA REGULAR LIGHT gray (5252/105/406)</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">83522-D::LIGHT gray-406::100725</td>
+    <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059526</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/14/2025</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+    <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">1220</td>
+    <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1220</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে সবুজ রশি</td>
+    <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Dry Input Qty">0</td>
+    <td class="px-4 py-3.5">
+        <button class="open-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            1st Dry
+        </button>
+    </td>
+</tr>
+<tr class="hover:bg-gray-50 transition-all duration-200" data-qty="0" data-processes='[]'>
+    <td class="px-4 py-3.5 text-gray-600" data-label="S/N">4</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+    <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89522-D::LIGHT gray-406::050725</td>
+    <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059527</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/12/2025</td>
+    <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+    <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">9560</td>
+    <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">9560</td>
+    <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি</td>
+    <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Dry Input Qty">0</td>
+    <td class="px-4 py-3.5">
+        <button class="open-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            1st Dry
+        </button>
+    </td>
+</tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-t border-gray-200">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-gray-600 font-poppins">Showing 1 to 6 of 6 entries</p>
+                    <div class="flex space-x-2 font-poppins">
+                        <button class="px-5 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors duration-200 font-medium">
+                            Previous
+                        </button>
+                        <button class="px-5 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors duration-200 font-medium">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="firstDryModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity duration-300 ease-out opacity-0">
+        <div class="bg-white rounded-xl shadow-3xl max-w-3xl w-full m-4 transform scale-95 transition-transform duration-300 ease-out overflow-hidden">
+            <div class="bg-gray-800 text-white p-6 flex justify-between items-center">
+                <h3 class="text-2xl font-bold font-montserrat tracking-wide">1st Dry Process Input</h3>
+                <button id="closeModal" class="text-gray-100 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full p-1">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="p-8 custom-scrollbar max-h-[80vh] overflow-y-auto">
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6 shadow-sm">
+                    <h4 class="font-semibold text-lg text-gray-800 mb-4 font-poppins flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        Order Details
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-inter text-base">
+                        <div class="flex">
+                            <span class="font-medium text-gray-600 min-w-[110px]">Work Order:</span>
+                            <span id="modalWorkOrder" class="font-semibold text-gray-700 break-words"></span>
+                        </div>
+                        <div class="flex">
+                            <span class="font-medium text-gray-600 min-w-[110px]">Style Name:</span>
+                            <span id="modalStyleName" class="break-words"></span>
+                        </div>
+                        <div class="flex col-span-1 md:col-span-2">
+                            <span class="font-medium text-gray-600 min-w-[110px]">PO/Color:</span>
+                            <span id="modalPOColor" class="break-words"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-100 border-b border-gray-200">
+                            <tr class="text-gray-700 font-poppins">
+                                <th rowspan="2" class="px-4 py-3 text-left font-semibold align-bottom whitespace-nowrap">Process Name</th>
+                                <th rowspan="2" class="px-4 py-3 text-center font-semibold align-bottom whitespace-nowrap">Qty</th>
+                                <th colspan="5" class="px-4 py-3 text-center font-semibold border-l border-gray-200 whitespace-nowrap">Selected Process Sequence</th>
+                            </tr>
+                            <tr class="text-gray-600 text-sm border-t border-gray-200">
+                                <th class="px-4 py-2 text-center font-medium border-l border-gray-200 whitespace-nowrap">1st</th>
+                                <th class="px-4 py-2 text-center font-medium whitespace-nowrap">2nd</th>
+                                <th class="px-4 py-2 text-center font-medium whitespace-nowrap">3rd</th>
+                                <th class="px-4 py-2 text-center font-medium whitespace-nowrap">4th</th>
+                                <th class="px-4 py-2 text-center font-medium whitespace-nowrap">5th</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-3 border-r border-gray-200 text-gray-800 font-medium whitespace-nowrap">1st Dry Process</td>
+                                <td class="px-4 py-3 border-r border-gray-200 text-center">
+                                    <input type="number" id="dryProcessQty" placeholder="Enter quantity" 
+                                           class="w-32 md:w-36 border border-gray-300 rounded-md px-3 py-2 text-center text-gray-800 
+                                                  focus:ring-gray-600 focus:border-gray-600 transition-colors duration-200
+                                                  hover:border-gray-400 font-inter">
+                                </td>
+                                <td class="px-2 py-2 text-center text-gray-700 font-semibold border-r border-gray-200 text-xs sm:text-sm" id="selectedProcess1st"></td>
+                                <td class="px-2 py-2 text-center text-gray-700 font-semibold border-r border-gray-200 text-xs sm:text-sm" id="selectedProcess2nd"></td>
+                                <td class="px-2 py-2 text-center text-gray-700 font-semibold border-r border-gray-200 text-xs sm:text-sm" id="selectedProcess3rd"></td>
+                                <td class="px-2 py-2 text-center text-gray-700 font-semibold border-r border-gray-200 text-xs sm:text-sm" id="selectedProcess4th"></td>
+                                <td class="px-2 py-2 text-center text-gray-700 font-semibold text-xs sm:text-sm" id="selectedProcess5th"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm">
+                    <h4 class="font-semibold text-lg text-gray-700 mb-4 font-poppins flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Select Dry Processes
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-800 font-inter">
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Whisker" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Whisker</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Laser" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Laser</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Hand Brush" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Hand Brush</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Tagging" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Tagging</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Fusing" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Fusing</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm border border-gray-100 hover:border-gray-300 transition-all duration-200 cursor-pointer">
+                            <input type="checkbox" name="processSelect" value="Curing1" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-3 font-medium">Curing1</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 px-8 py-5 border-t border-gray-200 flex justify-end">
+                <button id="saveModalData" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Confirm & Save
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const firstDryModal = document.getElementById('firstDryModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const openModalButtons = document.querySelectorAll('.open-modal-btn');
+        const saveModalData = document.getElementById('saveModalData');
+
+        const modalWorkOrder = document.getElementById('modalWorkOrder');
+        const modalStyleName = document.getElementById('modalStyleName');
+        const modalPOColor = document.getElementById('modalPOColor');
+        const dryProcessQty = document.getElementById('dryProcessQty');
+        const selectedProcessCells = [
+            document.getElementById('selectedProcess1st'),
+            document.getElementById('selectedProcess2nd'),
+            document.getElementById('selectedProcess3rd'),
+            document.getElementById('selectedProcess4th'),
+            document.getElementById('selectedProcess5th')
+        ];
+        const processSelectCheckboxes = document.querySelectorAll('input[name="processSelect"]');
+
+        let currentSelectedProcessOrder = [];
+
+        function openModal() {
+            firstDryModal.classList.remove('hidden');
+            setTimeout(() => {
+                firstDryModal.classList.remove('opacity-0');
+                firstDryModal.querySelector('div').classList.remove('scale-95');
+                firstDryModal.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            firstDryModal.classList.add('opacity-0');
+            firstDryModal.querySelector('div').classList.remove('scale-100');
+            firstDryModal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                firstDryModal.classList.add('hidden');
+                resetSelectedProcesses();
+                resetProcessCheckboxes();
+                dryProcessQty.value = '';
+                currentSelectedProcessOrder = [];
+            }, 300);
+        }
+
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const row = event.target.closest('tr');
+
+                modalWorkOrder.textContent = row.querySelector('[data-label="Work Order"]').textContent;
+                modalStyleName.textContent = row.querySelector('[data-label="Style"]').textContent;
+                modalPOColor.textContent = row.querySelector('[data-label="PO/Color"]').textContent;
+
+                const existingQty = parseInt(row.getAttribute('data-qty')) || 0;
+                const existingProcesses = JSON.parse(row.getAttribute('data-processes')) || [];
+
+                dryProcessQty.value = '';
+
+                resetSelectedProcesses();
+                resetProcessCheckboxes();
+
+                existingProcesses.forEach(process => {
+                    currentSelectedProcessOrder.push(process);
+                    const checkbox = Array.from(processSelectCheckboxes).find(cb => cb.value === process);
+                    if (checkbox) checkbox.checked = true;
+                });
+
+                updateSelectedProcessesDisplay();
+                openModal();
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        firstDryModal.addEventListener('click', (event) => {
+            if (event.target === firstDryModal) {
+                closeModal();
+            }
+        });
+
+        processSelectCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                const processValue = event.target.value;
+
+                if (event.target.checked) {
+                    if (!currentSelectedProcessOrder.includes(processValue)) {
+                        currentSelectedProcessOrder.push(processValue);
+                    }
+                } else {
+                    currentSelectedProcessOrder = currentSelectedProcessOrder.filter(item => item !== processValue);
+                }
+                updateSelectedProcessesDisplay();
+            });
+        });
+
+        function updateSelectedProcessesDisplay() {
+            selectedProcessCells.forEach(cell => cell.textContent = '');
+
+            currentSelectedProcessOrder.slice(0, 5).forEach((process, index) => {
+                if (index < selectedProcessCells.length) {
+                    selectedProcessCells[index].textContent = process;
+                }
+            });
+            if (currentSelectedProcessOrder.length > 5) {
+                selectedProcessCells[4].textContent = currentSelectedProcessOrder[4] + ' (+' + (currentSelectedProcessOrder.length - 5) + ' more)';
+            }
+        }
+
+        function resetSelectedProcesses() {
+            selectedProcessCells.forEach(cell => {
+                cell.textContent = '';
+            });
+        }
+
+        function resetProcessCheckboxes() {
+            processSelectCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            currentSelectedProcessOrder = [];
+        }
+
+        saveModalData.addEventListener('click', () => {
+            const workOrder = modalWorkOrder.textContent;
+            const newQty = parseInt(dryProcessQty.value) || 0;
+
+            const tableRow = Array.from(document.querySelectorAll('#productionTableBody tr')).find(row => {
+                return row.querySelector('[data-label="Work Order"]').textContent === workOrder;
+            });
+
+            if (tableRow) {
+                const existingQty = parseInt(tableRow.getAttribute('data-qty')) || 0;
+                const updatedQty = existingQty + newQty;
+                tableRow.setAttribute('data-qty', updatedQty);
+                tableRow.setAttribute('data-processes', JSON.stringify(currentSelectedProcessOrder));
+
+                const qtyCell = tableRow.querySelector('[data-label="1st Dry Input Qty"]');
+                qtyCell.textContent = updatedQty;
+
+                closeModal();
+            } else {
+                console.error('Matching work order not found!');
+            }
+        });
+    </script>
+</body>
+</html>
