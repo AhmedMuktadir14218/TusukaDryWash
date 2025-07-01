@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tusuka Wash Dry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    
+    <style>
+        /* Custom Typography Classes */
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Custom shadow for a more premium feel */
+        .shadow-3xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; /* gray-100 */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* gray-400 */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* gray-500 */
+        }
+
+        /* For the checkered pattern on cells as seen in the image */
+        .checkered-bg {
+            background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+                              linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+            background-size: 10px 10px;
+            background-position: 0 0, 5px 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="bg-gray-800 shadow-lg py-8 mb-8">
+        <h1 class="text-5xl font-bold text-center text-white font-montserrat tracking-tight">
+            <span class="text-teal-300">Tusuka</span> Wash Dry
+        </h1>
+        <p class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide">Production Monitoring System</p>
+    </div>
+
+    <div class="container mx-auto px-4 mb-8">
+        <div class="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100">
+            <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100">
+                <h2 class="text-2xl font-semibold text-gray-800 font-montserrat">Production Overview</h2>
+                <p class="text-sm text-gray-600 font-poppins mt-1">Active wash and dry orders</p>
+            </div>
+
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="min-w-full table-auto text-sm">
+                    <thead>
+                        <tr class="bg-gray-700 text-white font-poppins">
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">S/N</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Fac</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Unit</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Buyer</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Style</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">PO/Color</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Work Order</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">T. Date</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Ord. Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Wash Recv Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Bal. Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Marks</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">1st Wash Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-inter" id="productionTableBody">
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059371">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">1</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">GD</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">100094402</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">542117::ARIANA gray::300625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059371</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/1/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">2001</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">2169</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1993</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল + সবুজ রশি PS-24</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td> <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059372">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">2</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BAGGY JORTS DAMAGES (5252/204/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">93284-D::gray-400::300625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059372</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/3/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">6000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">6491</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">6491</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে হলুদ রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059526">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">3</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BERMUDA REGULAR LIGHT gray (5252/105/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">83522-D::LIGHT gray-406::100725</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059526</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/14/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">1220</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1220</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে সবুজ রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059527">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">4</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89522-D::LIGHT gray-406::050725</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059527</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/12/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">9560</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">9560</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00051652">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">5</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89520-D::LIGHT gray-406::290625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00051652</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/8/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">10308</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">10308</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00051651">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">6</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89519-D::LIGHT gray-406::220625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00051651</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/4/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">10247</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">10247</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি UnWash Rtn-80</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-t border-gray-200">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-gray-600 font-poppins">Showing 1 to 6 of 6 entries</p>
+                    <div class="flex space-x-2 font-poppins">
+                        <button class="px-5 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors duration-200 font-medium">
+                            Previous
+                        </button>
+                        <button class="px-5 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors duration-200 font-medium">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="batchCardModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity duration-300 ease-out opacity-0">
+        <div class="bg-white rounded-xl shadow-3xl max-w-3xl w-full m-4 transform scale-95 transition-transform duration-300 ease-out overflow-hidden">
+            <div class="bg-gray-800 text-white p-6 flex justify-between items-center">
+                <h3 class="text-2xl font-bold font-montserrat tracking-wide">Batch Card For 1st Wash</h3>
+                <button id="closeBatchModal" class="text-gray-100 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full p-1">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="p-8 custom-scrollbar max-h-[80vh] overflow-y-auto">
+                <div class="border border-gray-300 grid grid-cols-1 md:grid-cols-2">
+                    <div class="grid grid-cols-2 border-b md:border-b-0 md:border-r border-gray-300">
+                        <div class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">Work Order</div>
+                        <div class="border-b border-gray-300 p-2 text-sm text-gray-700 font-medium" id="modalBatchWorkOrder"></div>
+
+                        <div class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">Style</div>
+                        <div class="border-b border-gray-300 p-2 text-sm text-gray-800 font-medium" id="modalBatchStyle"></div>
+
+                        <div class="border-r border-gray-300 p-2 text-sm font-semibold text-gray-700">PO</div>
+                        <div class="p-2 text-sm text-gray-800 font-medium" id="modalBatchPO"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2">
+                        <div class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">QR Code</div>
+                        <div class="border-b border-gray-300 p-2 text-sm text-gray-800 font-medium flex justify-center items-center">
+                            <canvas id="qrCodeCanvas" class="w-30 h-30"></canvas>
+                        </div>
+                        <div class="border-r border-gray-300 p-2 text-sm font-semibold text-gray-700">Process Step</div>
+                        <div class="p-2 text-sm text-gray-800 font-medium">1st Wash</div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-300 mt-6">
+                    <div class="grid grid-cols-3">
+                        <div class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">Batch No</div>
+                        <div class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">Batch Qty</div>
+                        <div class="border-b border-gray-300 p-2 text-sm font-semibold text-gray-700">Batch Weight</div>
+                    </div>
+                    <div class="grid grid-cols-3">
+                        <div class="border-r border-gray-300 p-2 text-sm text-gray-800 font-medium" id="modalBatchNo">1</div>
+                        <div class="border-r border-gray-300 p-2 text-center">
+                            <input type="number" id="batchQtyInput" placeholder="input Qty" 
+                                class="w-full border border-gray-300 rounded-md px-2 py-1 text-center text-gray-800 
+                                       focus:ring-gray-600 focus:border-gray-600 transition-colors duration-200">
+                        </div>
+                        <div class="p-2 text-center">
+                            <input type="number" id="batchWeightInput" placeholder="input Weight" 
+                                class="w-full border border-gray-300 rounded-md px-2 py-1 text-center text-gray-800 
+                                       focus:ring-gray-600 focus:border-gray-600 transition-colors duration-200">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 border border-gray-300 rounded-lg overflow-hidden">
+                    <div class="bg-gray-100 p-3 text-lg font-semibold text-gray-800 border-b border-gray-200 text-center font-montserrat">Process List</div>
+                    <div class="p-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-800 font-inter">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 1" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 1</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 2" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 2</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 3" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 3</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 4" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 4</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 5" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 5</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 6" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 6</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 7" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 7</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 8" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 8</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 9" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 9</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 10" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 10</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 11" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 11</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 12" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 12</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 13" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 13</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 14" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 14</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 15" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 15</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 16" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 16</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 17" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 17</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 18" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 18</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="batchProcess" value="Process 19" class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300">
+                            <span class="ml-2">Process 19</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 px-8 py-5 border-t border-gray-200 flex justify-end">
+                <button type="submit" id="saveBatchData" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Confirm & Save
+                </button>
+            </div>
+        </div>
+    </div>
+ <script src="script.js"></script>
+        const batchCardModal = document.getElementById('batchCardModal');
+        const closeBatchModalBtn = document.getElementById('closeBatchModal');
+        const openBatchModalButtons = document.querySelectorAll('.open-batch-modal-btn');
+        const saveBatchDataBtn = document.getElementById('saveBatchData');
+
+        // Modal elements for Batch Card
+        const modalBatchWorkOrder = document.getElementById('modalBatchWorkOrder');
+        const modalBatchStyle = document.getElementById('modalBatchStyle');
+        const modalBatchPO = document.getElementById('modalBatchPO');
+        const modalBatchNo = document.getElementById('modalBatchNo');
+        const batchQtyInput = document.getElementById('batchQtyInput');
+        const batchWeightInput = document.getElementById('batchWeightInput');
+        const batchProcessCheckboxes = document.querySelectorAll('input[name="batchProcess"]');
+        const qrCodeCanvas = document.getElementById('qrCodeCanvas');
+
+        let currentActiveRow = null; // To keep track of which row opened the modal
+        
+        // Object to store batch numbers and 1st wash quantities for each work order
+        // In a real application, this data would come from a backend/database
+        const workOrderData = {
+            "00059371": { batchNo: 1, firstWashQty: 0 },
+            "00059372": { batchNo: 1, firstWashQty: 0 },
+            "00059526": { batchNo: 1, firstWashQty: 0 },
+            "00059527": { batchNo: 1, firstWashQty: 0 },
+            "00051652": { batchNo: 1, firstWashQty: 0 },
+            "00051651": { batchNo: 1, firstWashQty: 0 },
+        };
+
+        function openModal(modalElement) {
+            modalElement.classList.remove('hidden');
+            setTimeout(() => {
+                modalElement.classList.remove('opacity-0');
+                modalElement.querySelector('div').classList.remove('scale-95');
+                modalElement.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal(modalElement) {
+            modalElement.classList.add('opacity-0');
+            modalElement.querySelector('div').classList.remove('scale-100');
+            modalElement.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                modalElement.classList.add('hidden');
+                resetBatchModal(); // Reset content specific to batch modal
+            }, 300);
+        }
+
+        function resetBatchModal() {
+            modalBatchWorkOrder.textContent = '';
+            modalBatchStyle.textContent = '';
+            modalBatchPO.textContent = '';
+            batchQtyInput.value = '';
+            batchWeightInput.value = '';
+            batchProcessCheckboxes.forEach(checkbox => checkbox.checked = false); // Ensure checkboxes are reset
+            modalBatchNo.textContent = '1'; // Default, will be overwritten on open
+            // Clear QR code
+            const context = qrCodeCanvas.getContext('2d');
+            context.clearRect(0, 0, qrCodeCanvas.width, qrCodeCanvas.height);
+        }
+
+        function generateQRCode(workOrder, style, po, processStep) {
+            const qrData = `Work Order ${workOrder}\nStyle ${style}\nPO ${po}\nProcess Step ${processStep}`;
+            new QRious({
+                element: qrCodeCanvas,
+                value: qrData,
+                size: 100, // Adjust size as needed
+                padding: 10,
+                background: 'white',
+                foreground: 'black'
+            });
+        }
+
+
+        // Event listener for opening the Batch Card modal
+        openBatchModalButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                currentActiveRow = event.target.closest('tr'); // Set the active row
+                const workOrder = currentActiveRow.getAttribute('data-work-order');
+                const style = currentActiveRow.querySelector('[data-label="Style"]').textContent;
+                const po = currentActiveRow.querySelector('[data-label="PO/Color"]').textContent;
+                const processStep = '1st Wash'; // Hardcoded as per requirement
+
+                // Populate modal fields
+                modalBatchWorkOrder.textContent = workOrder;
+                modalBatchStyle.textContent = style;
+                modalBatchPO.textContent = po;
+                
+                // Set the current batch number for this work order
+                modalBatchNo.textContent = (workOrderData[workOrder]?.batchNo || 1) + ' ';
+
+                // Generate QR Code
+                generateQRCode(workOrder, style, po, processStep);
+
+                openModal(batchCardModal);
+            });
+        });
+
+        // Event listener for closing the Batch Card modal
+        closeBatchModalBtn.addEventListener('click', () => closeModal(batchCardModal));
+
+        // Close modal when clicking outside of it
+        batchCardModal.addEventListener('click', (event) => {
+            if (event.target === batchCardModal) {
+                closeModal(batchCardModal);
+            }
+        });
+
+        // Save Batch Data (Confirm & Save button)
+        saveBatchDataBtn.addEventListener('click', () => {
+            if (!currentActiveRow) {
+                console.error("No active row selected.");
+                return;
+            }
+
+            const batchQty = parseInt(batchQtyInput.value, 10);
+            const batchWeight = parseFloat(batchWeightInput.value); // Use parseFloat for weight
+            const workOrder = currentActiveRow.getAttribute('data-work-order');
+
+            if (isNaN(batchQty) || batchQty <= 0) {
+                alert("Please enter a valid Batch Quantity.");
+                return;
+            }
+            if (isNaN(batchWeight) || batchWeight <= 0) {
+                alert("Please enter a valid Batch Weight.");
+                return;
+            }
+
+            // Update 1st wash qty in the main table
+            const firstWashQtyCell = currentActiveRow.querySelector('[data-label="1st Wash Qty"]');
+            let currentFirstWashQty = parseInt(firstWashQtyCell.textContent, 10) || 0;
+            currentFirstWashQty += batchQty;
+            firstWashQtyCell.textContent = currentFirstWashQty;
+
+            // Update stored data for the work order
+            if (workOrderData[workOrder]) {
+                workOrderData[workOrder].batchNo++; // Increment batch number for next time
+                workOrderData[workOrder].firstWashQty = currentFirstWashQty;
+            } else {
+                // If somehow a new work order appears, initialize it
+                workOrderData[workOrder] = { batchNo: 2, firstWashQty: currentFirstWashQty };
+            }
+
+            // Optionally, you could collect selected processes here:
+            const selectedProcesses = [];
+            batchProcessCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedProcesses.push(checkbox.value);
+                }
+            });
+            console.log(`Work Order: ${workOrder}, Batch Qty: ${batchQty}, Batch Weight: ${batchWeight}, Selected Processes: ${selectedProcesses.join(', ')}`);
+
+
+            closeModal(batchCardModal);
+        });
+    </script> -->
+</body>
+</html>

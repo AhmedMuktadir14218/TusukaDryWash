@@ -74,23 +74,138 @@
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Unit</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Buyer</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Style</th>
-                            <!-- <th class="px-4 py-4 font-semibold text-left tracking-wider">FastReact No</th> -->
-                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Color</th>                            
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">PO/Color</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Work Order</th>
-                            <th class="px-4 py-4 font-semibold text-left tracking-wider">TOD</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">T. Date</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Ord. Qty</th>
-                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Total Wash Received</th>
-                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Wash Balance From Received</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Wash Recv Qty</th>
+                            <th class="px-4 py-4 font-semibold text-left tracking-wider">Bal. Qty</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Marks</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">1st Wash Qty</th>
                             <th class="px-4 py-4 font-semibold text-left tracking-wider">Action</th>
                         </tr>
                     </thead>
-
-                    <tbody class="divide-y divide-gray-100 font-inter" id="productionTableBody">
-                        
-                    </tbody>
-
+                    <!-- <tbody class="divide-y divide-gray-100 font-inter" id="productionTableBody">
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059371">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">1</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">GD</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">100094402</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">542117::ARIANA gray::300625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059371</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/1/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">2001</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">2169</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1993</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল + সবুজ রশি PS-24</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td> <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059372">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">2</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BAGGY JORTS DAMAGES (5252/204/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">93284-D::gray-400::300625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059372</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/3/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">6000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">6491</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">6491</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে হলুদ রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059526">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">3</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">BERMUDA REGULAR LIGHT gray (5252/105/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">83522-D::LIGHT gray-406::100725</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059526</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/14/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">1220</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">1220</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে সবুজ রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00059527">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">4</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89522-D::LIGHT gray-406::050725</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00059527</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/12/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">9560</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">9560</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00051652">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">5</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89520-D::LIGHT gray-406::290625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00051652</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/8/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">10308</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">10308</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-all duration-200" data-work-order="00051651">
+                            <td class="px-4 py-3.5 text-gray-600" data-label="S/N">6</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Fac">TFL</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Unit">Unit 1</td>
+                            <td class="px-4 py-3.5 font-semibold text-gray-700" data-label="Buyer">Zara</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Style">MID RISE WIDE LEG -W 25 (5252/224/406)</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="PO/Color">89519-D::LIGHT gray-406::220625</td>
+                            <td class="px-4 py-3.5 text-gray-700 font-medium" data-label="Work Order">00051651</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="T. Date">7/4/2025</td>
+                            <td class="px-4 py-3.5 text-gray-600 font-medium" data-label="Ord. Qty">10000</td>
+                            <td class="px-4 py-3.5 font-medium text-green-600" data-label="Wash Recv Qty">10247</td>
+                            <td class="px-4 py-3.5 font-medium text-orange-600" data-label="Bal. Qty">10247</td>
+                            <td class="px-4 py-3.5 text-gray-600" data-label="Marks">লুপে লাল রশি UnWash Rtn-80</td>
+                            <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">0</td>
+                            <td class="px-4 py-3.5">
+                                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                    1st Wash Batch
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> -->
                 </table>
             </div>
 
