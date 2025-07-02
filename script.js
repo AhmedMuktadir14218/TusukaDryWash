@@ -67,7 +67,7 @@ function populateTable(dataToDisplay) {
             <td class="px-4 py-3.5 text-gray-600" data-label="Marks">${row.Marks}</td>
             <td class="px-4 py-3.5 font-medium text-gray-600" data-label="1st Wash Qty">${row['1st Wash Qty'] || 0}</td>
             <td class="px-4 py-3.5">
-                <button class="open-batch-modal-btn bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <button class="open-batch-modal-btn bg-gray-700 hover:bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     1st Batch
                 </button>
             </td>
