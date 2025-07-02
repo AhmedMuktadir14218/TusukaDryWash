@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('./dataTable.json')
+    fetch('/dataTable.json')
         .then(response => response.json())
         .then(data => {
             window.originalTableData = data.map((row, index) => ({ ...row, _originalIndex: index })); // Store original index

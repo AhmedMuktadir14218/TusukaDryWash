@@ -1,0 +1,54 @@
+<!-- sidebar.html -->
+<div id="sidebar" class="bg-primary text-white w-sidebar-expanded fixed h-full flex flex-col transition-all duration-300 z-50">
+    <div class="flex justify-between items-center p-4 border-b border-white/10">
+        <div class="text-xl font-bold truncate sidebar-text">Tusuka WashDry</div>
+        <button id="toggleSidebar" class="text-white p-1 rounded hover:bg-white/10">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    
+    <ul class="flex-1 overflow-y-auto py-2">
+        <li class="bg-secondary">
+            <a href="/index.html" class="flex items-center gap-3 p-3 hover:bg-accent sidebar-icon">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span class="sidebar-text">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="1st Dry/1stDryIndex.html" class="flex items-center gap-3 p-3 hover:bg-accent sidebar-icon">
+                <i class="fas fa-wind w-5 text-center"></i>
+                <span class="sidebar-text">1st Dry</span>
+            </a>
+        </li>
+        <li>
+            <a href="1st Wash/1stWashIndex.html" class="flex items-center gap-3 p-3 hover:bg-accent sidebar-icon">
+                <i class="fas fa-soap w-5 text-center"></i>
+                <span class="sidebar-text">1st Wash</span>
+            </a>
+        </li>
+    </ul>
+    
+    <div class="border-t border-white/10 p-3">
+        <div class="flex items-center gap-3 pb-3 profile">
+            <img src="/img/profile-default.webp" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+            <div class="truncate profile-info">
+                <div class="font-semibold text-sm">Admin User</div>
+                <div class="text-xs opacity-80">Supervisor</div>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="#settings" class="flex items-center gap-3 p-2 hover:bg-accent rounded sidebar-icon">
+                    <i class="fas fa-cog w-5 text-center"></i>
+                    <span class="sidebar-text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#logout" class="flex items-center gap-3 p-2 hover:bg-accent rounded sidebar-icon">
+                    <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                    <span class="sidebar-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

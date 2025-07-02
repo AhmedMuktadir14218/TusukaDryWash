@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tusuka 1st Wash Process</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.dataTables.min.css"
+    />
+<link rel="stylesheet" href="../style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+    <style>
+      /* Custom Typography Classes */
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+      }
+      .font-inter {
+        font-family: "Inter", sans-serif;
+      }
+      .font-montserrat {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Custom shadow for a more premium feel */
+      .shadow-3xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+          0 0 15px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Custom scrollbar for better aesthetics */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9; /* gray-100 */
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1; /* gray-400 */
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; /* gray-500 */
+      }
+      /* DataTable specific styles for better appearance */
+      #productionTable_wrapper .dataTables_paginate .paginate_button.current,
+      #productionTable_wrapper
+        .dataTables_paginate
+        .paginate_button.current:hover {
+        background-color: #4a5568 !important; /* gray-700 */
+        color: white !important;
+        border-color: #4a5568 !important;
+      }
+      #productionTable_wrapper .dataTables_paginate .paginate_button {
+        color: #4a5568 !important;
+      }
+      #productionTable_wrapper .dataTables_filter input {
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        padding: 0.5rem 1rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      #productionTable_wrapper .dataTables_length select {
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        padding: 0.5rem 1rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      /* Fixed header specific adjustments if FixedHeader is enabled */
+      #productionTable thead th {
+        position: sticky;
+        top: 0;
+        background-color: #374151; /* Match bg-gray-700 */
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar">
+    <div class="logo">Tusuka WashDry</div>
+    <ul class="nav-menu">
+        <li><a href="../index.html">Dashboard</a></li>
+        <li class="active"><a href="index.html">1st Dry</a></li>
+        <li><a href="../1st Wash/index.html">1st Wash</a></li>
+    </ul>
+</div>
+<div class="main-content" style="margin-left: 250px; width: calc(100% - 250px); padding: 20px;">
+ 
+    <div class="bg-gray-800 shadow-lg py-8 mb-8">
+      <h1
+        class="text-5xl font-bold text-center text-white font-montserrat tracking-tight"
+      >
+        <span class="text-[#5E68EA]">Tusuka</span> 1st Wash
+      </h1>
+      <p
+        class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide"
+      >
+        Production Monitoring System
+      </p>
+    </div>
+
+    <div class="container mx-auto px-4 mb-8">
+      <div
+        class="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100"
+      >
+        <div
+          class="p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 flex justify-between items-center"
+        >
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800 font-montserrat">
+              Production Overview
+            </h2>
+            <p class="text-sm text-gray-600 font-poppins mt-1">
+              Active wash and dry orders
+            </p>
+          </div>
+          <div class="flex space-x-2">
+            <button
+              id="mergeRowsBtn"
+              class="bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 flex items-center"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                ></path>
+              </svg>
+              Merge Rows
+            </button>
+            <button
+              id="unmergeRowsBtn"
+              class="bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 flex items-center"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2A9 9 0 111 10a9 9 0 0118 0z"
+                ></path>
+              </svg>
+              Unmerge Row
+            </button>
+            <a
+              href="./../1st Dry/index.html"
+              class="bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-[#4b54c4] transition duration-200"
+            >
+              <button>Go to 1st Dry</button>
+            </a>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+          <table id="productionTable" class="min-w-full table-auto text-sm">
+            <thead>
+              <tr class="bg-gray-700 text-white font-poppins">
+                <th
+                  class="px-4 py-4 font-semibold text-left tracking-wider"
+                ></th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  S/N
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Fac
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Unit
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Buyer
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Style
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Color
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Work Order
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  TOD
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Ord. Qty
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Total Wash Received
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Wash Balance From Received
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Marks
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  1st Wash Qty
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Action
+                </th>
+                <th class="px-4 py-4 font-semibold text-left tracking-wider">
+                  Total Order Quantity
+                </th>
+              </tr>
+            </thead>
+
+            <tbody
+              class="divide-y divide-gray-100 font-inter"
+              id="productionTableBody"
+            ></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div
+      id="batchCardModal"
+      class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity duration-300 ease-out opacity-0"
+    >
+      <div
+        class="bg-white rounded-xl shadow-3xl max-w-3xl w-full m-4 transform scale-95 transition-transform duration-300 ease-out overflow-hidden"
+      >
+        <div
+          class="bg-gray-800 text-white p-6 flex justify-between items-center"
+        >
+          <h3 class="text-2xl font-bold font-montserrat tracking-wide">
+            Batch Card For 1st Wash
+          </h3>
+          <button
+            id="closeBatchModal"
+            class="text-gray-100 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full p-1"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="p-8 custom-scrollbar max-h-[80vh] overflow-y-auto">
+          <div class="border border-gray-300 grid grid-cols-1 md:grid-cols-2">
+            <div
+              class="grid grid-cols-2 border-b md:border-b-0 md:border-r border-gray-300"
+            >
+              <div
+                class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Work Order
+              </div>
+              <div
+                class="border-b border-gray-300 p-2 text-sm text-gray-700 font-medium"
+                id="modalBatchWorkOrder"
+              ></div>
+
+              <div
+                class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Style
+              </div>
+              <div
+                class="border-b border-gray-300 p-2 text-sm text-gray-800 font-medium"
+                id="modalBatchStyle"
+              ></div>
+
+              <div
+                class="border-r border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                PO/Color
+              </div>
+              <div
+                class="p-2 text-sm text-gray-800 font-medium"
+                id="modalBatchPO"
+              ></div>
+            </div>
+
+            <div class="grid grid-cols-2">
+              <div
+                class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                QR Code
+              </div>
+              <div
+                class="border-b border-gray-300 p-2 text-sm text-gray-800 font-medium flex justify-center items-center"
+              >
+                <canvas id="qrCodeCanvas" class="w-30 h-30"></canvas>
+              </div>
+              <div
+                class="border-r border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Process Step
+              </div>
+              <div class="p-2 text-sm text-gray-800 font-medium">1st Wash</div>
+            </div>
+          </div>
+
+          <div class="border border-gray-300 mt-6">
+            <div class="grid grid-cols-3">
+              <div
+                class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Batch No
+              </div>
+              <div
+                class="border-r border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Batch Qty
+              </div>
+              <div
+                class="border-b border-gray-300 p-2 text-sm font-semibold text-gray-700"
+              >
+                Batch Weight
+              </div>
+            </div>
+            <div class="grid grid-cols-3">
+              <div
+                class="border-r border-gray-300 p-2 text-sm text-gray-800 font-medium"
+                id="modalBatchNo"
+              >
+                1
+              </div>
+              <div class="border-r border-gray-300 p-2 text-center">
+                <input
+                  type="number"
+                  id="batchQtyInput"
+                  placeholder="input Qty"
+                  class="w-full border border-gray-300 rounded-md px-2 py-1 text-center text-gray-800 focus:ring-gray-600 focus:border-gray-600 transition-colors duration-200"
+                />
+              </div>
+              <div class="p-2 text-center">
+                <input
+                  type="number"
+                  id="batchWeightInput"
+                  placeholder="input Weight"
+                  class="w-full border border-gray-300 rounded-md px-2 py-1 text-center text-gray-800 focus:ring-gray-600 focus:border-gray-600 transition-colors duration-200"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 border border-gray-300 rounded-lg overflow-hidden">
+            <div
+              class="bg-gray-100 p-3 text-lg font-semibold text-gray-800 border-b border-gray-200 text-center font-montserrat"
+            >
+              Process List
+            </div>
+            <div
+              class="p-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-800 font-inter"
+            >
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 1"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 1</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 2"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 2</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 3"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 3</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 4"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 4</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 5"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 5</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 6"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 6</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 7"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 7</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 8"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 8</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="batchProcess"
+                  value="Process 9"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded-sm focus:ring-gray-500 border-gray-300"
+                />
+                <span class="ml-2">Process 9</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-100 px-8 py-5 border-t border-gray-200 flex justify-end"
+        >
+          <button
+            type="submit"
+            id="saveBatchData"
+            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 flex items-center"
+          >
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+            Confirm & Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

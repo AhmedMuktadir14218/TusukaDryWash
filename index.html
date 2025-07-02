@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tusuka WashDry Process</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2c3e50',
+                        secondary: '#3498db',
+                        accent: '#34495e',
+                    },
+                    spacing: {
+                        'sidebar-collapsed': '5rem',
+                        'sidebar-expanded': '16rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .sidebar-collapsed .sidebar-text {
+            display: none;
+        }
+        .sidebar-collapsed .sidebar-icon {
+            justify-content: center;
+        }
+        .sidebar-collapsed .profile-info {
+            display: none;
+        }
+        .sidebar-collapsed .profile {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen transition-all duration-300" id="appContainer">
+        <!-- Sidebar will be loaded here -->
+        <div id="sidebar-container"></div>
+        
+        <!-- Main Content Area -->
+        <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 transition-all duration-300">
+            <header class="bg-white p-5 rounded-lg shadow mb-5">
+                <h1 class="text-2xl font-bold">Welcome to Tusuka WashDry Process</h1>
+            </header>
+            
+            <div class="bg-white p-5 rounded-lg shadow">
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-2">Process Dashboard</h2>
+                    <p class="text-gray-600">Select a process from the sidebar to begin.</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-5">
+                    <div class="bg-gray-50 p-5 rounded-lg shadow flex-1 min-w-[250px]">
+                        <h3 class="font-semibold text-lg text-primary mb-2">Dry Process</h3>
+                        <p class="text-gray-600 mb-3">Access the drying process</p>
+                        <a href="1st Dry/1stDryIndex.html" class="inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                            Go to Dry
+                        </a>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-lg shadow flex-1 min-w-[250px]">
+                        <h3 class="font-semibold text-lg text-primary mb-2">Wash Process</h3>
+                        <p class="text-gray-600 mb-3">Access the washing process</p>
+                        <a href="1st Wash/1stWashIndex.html" class="inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                            Go to Wash
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Load sidebar, then script.js -->
+    <script>
+        // Load the sidebar then initialize script.js dependent code
+        fetch('sidebar.html')
+          .then(res => res.text())
+          .then(html => {
+            document.getElementById('sidebar-container').innerHTML = html;
+            // Only after it's loaded, load the main JS
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+          });
+    </script>
+</body>
+</html>
