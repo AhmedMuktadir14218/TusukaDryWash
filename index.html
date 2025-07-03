@@ -7,7 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- Buttons CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     
     <script>
         tailwind.config = {
@@ -53,46 +56,78 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background-color: #555;
         }
+        /* DataTables Buttons styling */
+        .dt-button-collection {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 0.5rem;
+        }
+        .dt-button-collection button {
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 0.25rem;
+            width: 100%;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .dt-button-collection button:hover {
+            background-color: #f1f5f9;
+        }
+        .dt-button-collection .dt-button-active {
+            background-color: #5E68EA;
+            color: white;
+        }
+        .dt-button-collection .dt-button-active:hover {
+            background-color: #4b54c4;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen transition-all duration-300" id="appContainer">
         <div id="sidebar-container"></div>
         
-        <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 transition-all duration-300 ">
-            <header class="bg-white p-5 rounded-lg shadow mb-5">
-                <h1 class="text-2xl font-bold">Welcome to Tusuka WashDry Process</h1>
-            </header>
+        <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 transition-all duration-300 w-full"> 
+            <div class="bg-gray-800 shadow-lg py-8 mb-8 rounded-lg">
+                <h1 class="text-5xl font-bold text-center text-white font-montserrat tracking-tight">
+                    <span class="text-[#5E68EA]">Tusuka</span> WashDry Process
+                </h1>
+                <p class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide">Production Monitoring System</p>
+            </div>
             
-            <div class="bg-white p-5 rounded-lg shadow mb-5">
+            <div class="container mx-auto bg-white px-4 rounded-lg shadow mb-5 py-5">
                 <div class="mb-8">
                     <h2 class="text-xl font-semibold mb-2">Process Dashboard</h2>
                     <p class="text-gray-600">Select a process from the sidebar to begin.</p>
                 </div>
                 
                 <div class="flex flex-wrap gap-5">
-                    <div class="bg-gray-50 p-5 rounded-lg shadow flex-1 min-w-[250px]">
+                    <div class="bg-gray-100 p-5 rounded-lg shadow flex-1 min-w-[250px]">
                         <h3 class="font-semibold text-lg text-primary mb-2">Dry Process</h3>
                         <p class="text-gray-600 mb-3">Access the drying process</p>
-                        <a href="1st Dry/1stDryIndex.html" class="inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-                            Go to Dry
+                        <a href="1st Dry/1stDryIndex.html" class="inline-block bg-gray-600 hover:bg-[#4b54c4] text-white px-4 py-2 rounded transition">
+                            Start Dry Process
                         </a>
                     </div>
-                    <div class="bg-gray-50 p-5 rounded-lg shadow flex-1 min-w-[250px]">
+                    <div class="bg-gray-100 p-5 rounded-lg shadow flex-1 min-w-[250px]">
                         <h3 class="font-semibold text-lg text-primary mb-2">Wash Process</h3>
                         <p class="text-gray-600 mb-3">Access the washing process</p>
-                        <a href="1st Wash/1stWashIndex.html" class="inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-                            Go to Wash
+                        <a href="1st Wash/1stWashIndex.html" class="inline-block bg-gray-600 hover:bg-[#4b54c4] text-white px-4 py-2 rounded transition">
+                            Start Wash Process
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-5 rounded-lg shadow">
-                <h2 class="text-xl font-semibold mb-4">Final Report</h2>
+            <div class="container mx-auto px-4 py-5 mb-8 bg-white rounded-lg shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Final Report</h2>
+                    <div id="tableButtons"></div>
+                </div>
                 
                 <div class="overflow-x-auto custom-scrollbar">
-                    <table id="finalReportTable" class="min-w-full table-auto text-sm">
+                    <table id="finalReportTable" class="min-w-full table-auto text-sm  ">
                         <thead>
                             <tr class="bg-gray-700 text-white font-poppins">
                                 <th class="px-4 py-4 font-semibold text-left tracking-wider">S/N</th>
@@ -113,69 +148,135 @@
                                 <th class="px-4 py-4 font-semibold text-left tracking-wider">2nd Wash Qty</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 font-inter">
+                        <tbody class="divide-y divide-gray-100 font-inter text-center">
                         </tbody>
                     </table>
                 </div>
-                </div>
-
+            </div>
         </div>
     </div>
     
     <script>
         // Load the sidebar then initialize script.js dependent code
         fetch('sidebar.html')
-          .then(res => res.text())
-          .then(html => {
-            document.getElementById('sidebar-container').innerHTML = html;
-            // Only after it's loaded, load the main JS
-            const script = document.createElement('script');
-            script.src = 'script.js';
-            document.body.appendChild(script);
-          });
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidebar-container').innerHTML = html;
+                // Only after it's loaded, load the main JS
+                const script = document.createElement('script');
+                script.src = 'script.js';
+                document.body.appendChild(script);
+            });
     </script>
 
+    <!-- jQuery and DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    
-    <script>
-    $(document).ready(function() {
-        fetch('ReportData.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+    <!-- DataTables Buttons and extensions -->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // First, let's test if we can fetch the JSON
+    fetch('ReportData.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data loaded successfully:', data);
+            initializeDataTable(data);
+        })
+        .catch(error => {
+            console.error('Error loading data:', error);
+            showError();
+        });
+
+    function initializeDataTable(data) {
+        try {
+            var table = $('#finalReportTable').DataTable({
+                dom: '<"flex justify-between items-center mb-4"lfB>rt<"bottom"ip>',
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        text: '<i class="fas fa-eye mr-2"></i>Column Visibility',
+                        className: 'bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center',
+                        columns: ':not(.noVis)'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fas fa-print mr-2"></i>Print',
+                        className: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center',
+                        title: 'Tusuka WashDry Process - Final Report'
+                    }
+                ],
+                data: data,
+                columns: [
+                    { data: 's_n', title: "S/N" },
+                    { data: 'fac', title: "Fac" },
+                    { data: 'unit', title: "Unit" },
+                    { data: 'buyer', title: "Buyer" },
+                    { data: 'style', title: "Style" },
+                    { data: 'po_color', title: "PO/Color" },
+                    { data: 'work_order', title: "Work Order" },
+                    { data: 't_date', title: "T. Date" },
+                    { data: 'ord_qty', title: "Ord. Qty" },
+                    { data: 'wash_recev_qty', title: "Wash (Recev Qty)" },
+                    { data: 'bal_qty', title: "Bal. Qty" },
+                    { data: 'marks', title: "Marks" },
+                    { data: '1st_dry_qty', title: "1st Dry Qty" },
+                    { data: '1st_wash_qty', title: "1st Wash Qty" },
+                    { data: '2nd_dry_qty', title: "2nd Dry Qty" },
+                    { data: '2nd_wash_qty', title: "2nd Wash Qty" }
+                ],
+                responsive: true,
+                pageLength: 10,
+                lengthMenu: [5, 10, 25, 50, 100],
+                language: {
+                    emptyTable: "No data available in table",
+                    info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                    infoEmpty: "Showing 0 to 0 of 0 entries",
+                    infoFiltered: "(filtered from _MAX_ total entries)",
+                    lengthMenu: "Show _MENU_ entries",
+                    search: "Search:",
+                    zeroRecords: "No matching records found"
                 }
-                return response.json();
-            })
-            .then(data => {
-                $('#finalReportTable').DataTable({
-                    data: data,
-                    columns: [
-                        // Keeping original column mappings and titles
-                        { data: 's_n', title: "S/N" },
-                        { data: 'fac', title: "Fac" },
-                        { data: 'unit', title: "Unit" },
-                        { data: 'buyer', title: "Buyer" },
-                        { data: 'style', title: "Style" },
-                        { data: 'po_color', title: "PO/ Color" },
-                        { data: 'work_order', title: "Work Order" },
-                        { data: 't_date', title: "T. Date" },
-                        { data: 'ord_qty', title: "Ord. Qty" },
-                        { data: 'wash_recev_qty', title: "Wash (Recev Qty)" },
-                        { data: 'bal_qty', title: "Bal. Qty" },
-                        { data: 'marks', title: "Marks" },
-                        { data: '1st_dry_qty', title: "1st Dry Qty" },
-                        { data: '1st_wash_qty', title: "1st Wash Qty" },
-                        { data: '2nd_dry_qty', title: "2nd Dry Qty" },
-                        { data: '2nd_wash_qty', title: "2nd Wash Qty" } 
-                    ]
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching the JSON data:', error);
-                $('#finalReportTable').html('<p style="color: red;">Error loading data. Please check the console for details.</p>');
             });
-    });
-    </script>
+            
+            console.log('DataTable initialized successfully');
+        } catch (e) {
+            console.error('DataTable initialization error:', e);
+            showError();
+        }
+    }
+
+    function showError() {
+        const tableElement = document.getElementById('finalReportTable');
+        if (tableElement) {
+            const tbody = tableElement.querySelector('tbody');
+            if (tbody) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="16" class="text-center py-4 text-red-500">
+                            Error loading data. Please check:
+                            <ul class="list-disc list-inside mt-2 text-left max-w-md mx-auto">
+                                <li>Is ReportData.json in the correct location?</li>
+                                <li>Does the JSON file contain valid data?</li>
+                                <li>Check browser console for detailed errors</li>
+                            </ul>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
