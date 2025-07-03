@@ -1,21 +1,6 @@
 [
  
-  {
-    "S/N": 6,
-    "Factory": "TFL",
-    "Unit": "Unit 1",
-    "Buyer": "GD",
-    "Style Name": "100094315",
-    "FastReact No": "542289::CYRUS BLUE::130725",
-    "Color": "CYRUS BLUE",
-    "Work Order No": "00059591",
-    "Order Quantity": 1000,
-    "TOD": 45851,
-    " Total Wash Received ": 1065,
-    " Total Wash Delivery ": 0,
-    " Wash Balance From Received ": 1065,
-    "Marks": "লুপে হলুদ + সবুজ রশি "
-  },
+ 
   {
     "S/N": 7,
     "Factory": "TFL",
