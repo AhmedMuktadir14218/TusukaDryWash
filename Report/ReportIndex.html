@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tusuka 1st Dry Process</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <style>
+      .sidebar-collapsed .sidebar-text { display: none;}
+      .sidebar-collapsed .sidebar-icon { justify-content: center;}
+      .sidebar-collapsed .profile-info { display: none;}
+      .sidebar-collapsed .profile { justify-content: center; padding-left: 0; padding-right: 0;}
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2c3e50',
+              secondary: '#5E68EA',
+              accent: '#34495e',
+            },
+            spacing: {
+              'sidebar-collapsed': '5rem',
+              'sidebar-expanded': '16rem',
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="flex min-h-screen transition-all duration-300" id="appContainer">
+      <!-- Sidebar will be loaded here -->
+      <div id="sidebar-container"></div>
+   <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 bg-gray-100 text-gray-900 font-inter transition-all duration-300 w-full">
+     
+      <div class="bg-gray-800 shadow-lg py-8 mb-8 rounded-lg">
+      <h1
+        class="text-5xl font-bold text-center text-white font-montserrat tracking-tight"
+      >
+        <span class="text-[#5E68EA]">Tusuka</span> PowerBi Report
+      </h1>
+      <p
+        class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide"
+      >
+        Production Monitoring System
+      </p>
+    </div>
+
+    <div class="container mx-auto px-4 mb-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 font-montserrat tracking-tight">
+            Coming Soon! :)
+        </h1>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+ 
+    <!-- Load sidebar, then script.js -->
+   <script>
+      // Get the correct relative path to sidebar.html
+      // If you are in /1st Dry/1stDryIndex.html, the sidebar is ../sidebar.html
+      // If you move this file, adjust the path accordingly.
+      fetch('../sidebar.html') // <-- ADJUSTED FOR SUBFOLDER!
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+
+          // Dynamically load the shared sidebar/main UI script
+          const script = document.createElement('script');
+          // If script.js is also in parent, use ../script.js
+          script.src = '../script.js';
+          document.body.appendChild(script);
+        });
+    </script>
+  </body>
+</html>
