@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         primary: '#2c3e50',
-                        secondary: '#3498db',
+                        secondary: '#5E68EA',
                         accent: '#34495e',
                     },
                     spacing: {
@@ -38,20 +41,30 @@
             padding-left: 0;
             padding-right: 0;
         }
+        /* Custom Scrollbar for overflow-x-auto */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            background-color: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen transition-all duration-300" id="appContainer">
-        <!-- Sidebar will be loaded here -->
         <div id="sidebar-container"></div>
         
-        <!-- Main Content Area -->
-        <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 transition-all duration-300">
+        <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 transition-all duration-300 ">
             <header class="bg-white p-5 rounded-lg shadow mb-5">
                 <h1 class="text-2xl font-bold">Welcome to Tusuka WashDry Process</h1>
             </header>
             
-            <div class="bg-white p-5 rounded-lg shadow">
+            <div class="bg-white p-5 rounded-lg shadow mb-5">
                 <div class="mb-8">
                     <h2 class="text-xl font-semibold mb-2">Process Dashboard</h2>
                     <p class="text-gray-600">Select a process from the sidebar to begin.</p>
@@ -74,10 +87,41 @@
                     </div>
                 </div>
             </div>
+
+            <div class="bg-white p-5 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">Final Report</h2>
+                
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table id="finalReportTable" class="min-w-full table-auto text-sm">
+                        <thead>
+                            <tr class="bg-gray-700 text-white font-poppins">
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">S/N</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Fac</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Unit</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Buyer</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Style</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">PO/ Color</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Work Order</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">T. Date</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Ord. Qty</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Wash (Recev Qty)</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Bal. Qty</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">Marks</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">1st Dry Qty</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">1st Wash Qty</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">2nd Dry Qty</th>
+                                <th class="px-4 py-4 font-semibold text-left tracking-wider">2nd Wash Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 font-inter">
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
         </div>
     </div>
     
-    <!-- Load sidebar, then script.js -->
     <script>
         // Load the sidebar then initialize script.js dependent code
         fetch('sidebar.html')
@@ -89,6 +133,49 @@
             script.src = 'script.js';
             document.body.appendChild(script);
           });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        fetch('ReportData.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                $('#finalReportTable').DataTable({
+                    data: data,
+                    columns: [
+                        // Keeping original column mappings and titles
+                        { data: 's_n', title: "S/N" },
+                        { data: 'fac', title: "Fac" },
+                        { data: 'unit', title: "Unit" },
+                        { data: 'buyer', title: "Buyer" },
+                        { data: 'style', title: "Style" },
+                        { data: 'po_color', title: "PO/ Color" },
+                        { data: 'work_order', title: "Work Order" },
+                        { data: 't_date', title: "T. Date" },
+                        { data: 'ord_qty', title: "Ord. Qty" },
+                        { data: 'wash_recev_qty', title: "Wash (Recev Qty)" },
+                        { data: 'bal_qty', title: "Bal. Qty" },
+                        { data: 'marks', title: "Marks" },
+                        { data: '1st_dry_qty', title: "1st Dry Qty" },
+                        { data: '1st_wash_qty', title: "1st Wash Qty" },
+                        { data: '2nd_dry_qty', title: "2nd Dry Qty" },
+                        { data: '2nd_wash_qty', title: "2nd Wash Qty" } 
+                    ]
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching the JSON data:', error);
+                $('#finalReportTable').html('<p style="color: red;">Error loading data. Please check the console for details.</p>');
+            });
+    });
     </script>
 </body>
 </html>
