@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tusuka Wash - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Custom styles based on the new color palette */
+        
+        .bg-primary-brand {
+            background-color: #1F2937;
+        }
+        .text-primary-brand {
+            color: #1F2937;
+        }
+        .border-primary-brand {
+            border-color: #1F2937;
+        }
+        .focus-ring-primary-brand:focus {
+            box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.4); /* Use primary brand color for focus ring */
+            border-color: #1F2937;
+        }
+
+        /* Dark Text/Element Color: #1F2937 */
+        .text-dark-text {
+            color: #1F2937;
+        }
+
+        /* Background Overlay for Image Darkening */
+        .bg-darken-overlay:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Darker black overlay */
+            z-index: -1; /* Place it behind the login card */
+        }
+        /* Ensure the login card is above the overlay */
+        .login-card {
+            position: relative; /* Needed for z-index to work against pseudo-element */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body 
+    class="flex justify-center items-center min-h-screen font-sans bg-cover bg-center bg-no-repeat bg-fixed relative bg-darken-overlay"
+    style="background-image: url('/TWL.jpg');"
+>
+    <div class="bg-gray-300 p-10 rounded-lg shadow-xl max-w-md w-full flex flex-col items-center login-card">
+        <div class="mb-6"> 
+            <h1 class="text-3xl font-extrabold text-center text-primary-brand mt-2">TUSUKA WASH</h1>
+            <p class="text-md text-center text-dark-text">Processing Management</p>
+        </div>
+
+        <!-- <h2 class="text-2xl font-bold text-center mb-8 text-dark-text">Login to Your Account</h2> -->
+        
+        <form id="loginForm" class="w-full">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-dark-text mb-1" for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    class="mt-1 p-3 border border-gray-300 w-full rounded-md shadow-sm focus:outline-none focus:ring-2 focus-ring-primary-brand" 
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-dark-text mb-1" for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="mt-1 p-3 border border-gray-300 w-full rounded-md shadow-sm focus:outline-none focus:ring-2 focus-ring-primary-brand" 
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+            
+            <div id="errorMessage" class="text-red-600 text-sm mb-4 text-center hidden">
+                Invalid username or password. Please try again.
+            </div>
+
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <input 
+                        id="rememberMe" 
+                        name="rememberMe" 
+                        type="checkbox" 
+                        class="h-4 w-4 text-primary-brand border-gray-300 rounded focus:ring-primary-brand"
+                    >
+                    <label for="rememberMe" class="ml-2 block text-sm text-dark-text">
+                        Remember me
+                    </label>
+                </div>
+                <a href="#" class="text-sm text-primary-brand hover:underline">Forgot password?</a>
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-primary-brand text-white py-3 rounded-md hover:bg-opacity-90 transition duration-300 ease-in-out font-semibold text-lg"
+            >
+                Login
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Simulate authentication (replace with actual API call in production)
+            if (username === 'admin' && password === 'admin123') { // Example credentials
+                localStorage.setItem('loggedIn', 'true');
+                errorMessage.classList.add('hidden'); // Hide error if successful
+                window.location.href = '/index.html'; // Redirect to dashboard
+            } else {
+                errorMessage.classList.remove('hidden'); // Show error message
+                // Optional: Clear password field for security
+                document.getElementById('password').value = ''; 
+            }
+        });
+    </script>
+</body>
+</html>

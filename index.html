@@ -29,6 +29,11 @@
             }
         }
     </script>
+    <script>
+    if (!localStorage.getItem('loggedIn')) {
+        window.location.href = '/Authentication/login.html';
+    }
+</script>
     <style>
         .sidebar-collapsed .sidebar-text {
             display: none;
@@ -158,16 +163,26 @@
     
     <script>
         // Load the sidebar then initialize script.js dependent code
-        fetch('sidebar.html')
+        fetch('/sidebar.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('sidebar-container').innerHTML = html;
                 // Only after it's loaded, load the main JS
                 const script = document.createElement('script');
                 script.src = 'script.js';
-                document.body.appendChild(script);
+                document.body.appendChild(script); 
             });
+
+            
     </script>
+    <script>
+     function logout() {
+        //event.preventDefault();  // Prevent default anchor behavior
+        localStorage.removeItem('loggedIn');
+        console.log("Logged out successfully");
+        window.location.href = '/Authentication/login.html';
+    }
+</script>
 
     <!-- jQuery and DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
