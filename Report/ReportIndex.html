@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tusuka 1st Dry Process</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -18,10 +21,45 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <style>
-      .sidebar-collapsed .sidebar-text { display: none;}
-      .sidebar-collapsed .sidebar-icon { justify-content: center;}
-      .sidebar-collapsed .profile-info { display: none;}
-      .sidebar-collapsed .profile { justify-content: center; padding-left: 0; padding-right: 0;}
+      .sidebar-collapsed .sidebar-text {
+        display: none;
+      }
+      .sidebar-collapsed .sidebar-icon {
+        justify-content: center;
+      }
+      .sidebar-collapsed .profile-info {
+        display: none;
+      }
+      .sidebar-collapsed .profile {
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      /* Added styles for full-page iframe */
+      .iframe-container {
+        position: absolute; /* or 'relative' with explicit height/width */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden; /* Hide scrollbars if content overflows */
+      }
+
+      .iframe-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none; /* Remove iframe border */
+      }
+      /* Ensure main content takes up remaining height */
+      #mainContent {
+        display: flex;
+        flex-direction: column;
+      }
+      .content-wrapper {
+        flex-grow: 1; /* Allows this div to take available space */
+        display: flex;
+        flex-direction: column;
+      }
     </style>
     <script>
       tailwind.config = {
@@ -35,51 +73,50 @@
             spacing: {
               'sidebar-collapsed': '5rem',
               'sidebar-expanded': '16rem',
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      };
     </script>
   </head>
   <body>
-    <div class="flex min-h-screen transition-all duration-300" id="appContainer">
-      <!-- Sidebar will be loaded here -->
+    <div
+      class="flex min-h-screen transition-all duration-300"
+      id="appContainer"
+    >
       <div id="sidebar-container"></div>
-   <div id="mainContent" class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 bg-gray-100 text-gray-900 font-inter transition-all duration-300 w-full">
-     
-      <div class="bg-gray-800 shadow-lg py-8 mb-8 rounded-lg">
-      <h1
-        class="text-5xl font-bold text-center text-white font-montserrat tracking-tight"
+      <div
+        id="mainContent"
+        class="ml-sidebar-expanded w-[calc(100%-16rem)] p-5 bg-gray-100 text-gray-900 font-inter transition-all duration-300"
       >
-        <span class="text-[#5E68EA]">Tusuka</span> PowerBi Report
-      </h1>
-      <p
-        class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide"
-      >
-        Production Monitoring System
-      </p>
+        <!-- <div class="bg-gray-800 shadow-lg py-8 mb-8 rounded-lg flex-shrink-0">
+          <h1
+            class="text-5xl font-bold text-center text-white font-montserrat tracking-tight"
+          >
+            <span class="text-[#5E68EA]">Tusuka</span> PowerBi Report
+          </h1>
+          <p
+            class="text-center text-gray-100 mt-2 font-poppins text-lg tracking-wide"
+          >
+            Production Monitoring System
+          </p>
+        </div> -->
+
+        <div class="container mx-auto flex-grow relative">
+          <div class="iframe-container">
+            <iframe title="Tusuka_Jeans" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMjlmOGU5MTUtZDI4Ni00NTMzLTkwOWEtMjdkYWExNzdlZDRhIiwidCI6IjAzYmVhMzFmLWZhMjAtNDM0ZC05ZGZmLTljNzQyOTNjOTllZCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="container mx-auto px-4 mb-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 font-montserrat tracking-tight">
-            Coming Soon! :)
-        </h1>
-    
-    </div>
-    </div>
-    </div>
-    </div>
-
-
- 
-    <!-- Load sidebar, then script.js -->
-   <script>
+    <script>
       // Get the correct relative path to sidebar.html
       // If you are in /1st Dry/1stDryIndex.html, the sidebar is ../sidebar.html
       // If you move this file, adjust the path accordingly.
       fetch('../sidebar.html') // <-- ADJUSTED FOR SUBFOLDER!
-        .then(res => res.text())
-        .then(html => {
+        .then((res) => res.text())
+        .then((html) => {
           document.getElementById('sidebar-container').innerHTML = html;
 
           // Dynamically load the shared sidebar/main UI script
